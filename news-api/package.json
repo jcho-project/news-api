@@ -1,0 +1,24 @@
+{
+  "name": "news-api",
+  "version": "1.0.0",
+  "description": "news feed display exercise",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcho-project/news-api.git"
+  },
+  "author": "June Hyok Cho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcho-project/news-api/issues"
+  },
+  "homepage": "https://github.com/jcho-project/news-api#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "request": "^2.88.0"
+  }
+}
