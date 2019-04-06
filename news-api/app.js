@@ -2,18 +2,22 @@ const express = require("express");
 const app = express();
 const request = require("request");
 
-app.set("view enging", "ejs");
+app.set("view engine", "ejs");
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  let url = "https://newsapi.org/v2/everything?q=lg&from=2019-04-04&to=2019-04-04&sortBy=popularity&apiKey=0444a705c51c45ad8ef8e13241bf99a4";
+  let date = new Date();
+  let today = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDay()}`;
+  let query = req.query.search;
+  let url = "https://newsapi.org/v2/everything/?q=" + query + "&language=en&from=" + today + "&to=" + today + "&sortBy=relevancy&apiKey=0444a705c51c45ad8ef8e13241bf99a4";
 
   request(url, (error, response, body) => {
     if (!error && response.statusCode === 200) {
       let data = JSON.parse(body);
 
-      res.send(data);
+      res.render("search", { data: data });
     }
   });
 });
 
-app.listen(4000, () => "Server is Listening on Port : 4000");
+app.listen(4000, () => console.log("Server is Listening on Port : 4000"));
