@@ -16,13 +16,13 @@ li {
 
 img {
   margin: 0 auto;
-  max-width: 100%;
+  max-width: 50%;
   height: auto;
   display: block;
 }
 
-.article {
-  width: 50%;
+.articles {
+  width: 80%;
   border: 1px solid grey;
   margin: auto;
   padding: 20px;
@@ -30,5 +30,8 @@ img {
 
 .news {
   border: 1px solid grey;
+}
 
+.top {
+  border: 1px solid grey;
 }
