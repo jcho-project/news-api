@@ -11,7 +11,10 @@ app.get("/", (req, res) => {
 
 app.get("/search", (req, res) => {
   let query = req.query.search;
-  let url = "https://newsapi.org/v2/everything/?q=" + query + "&language=en&apiKey=0444a705c51c45ad8ef8e13241bf99a4";
+  // Search all articles
+  // let url = "https://newsapi.org/v2/everything/?q=" + query + "&language=en&apiKey=0444a705c51c45ad8ef8e13241bf99a4";
+  // Search top headlines
+  let url = "https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=0444a705c51c45ad8ef8e13241bf99a4";
 
   request(url, (error, response, body) => {
     if (!error && response.statusCode === 200) {
