@@ -1,0 +1,13 @@
+<% include partials/header %>
+
+<div class="sources">
+  <a href="/">Go Back</a>
+  <% for (let i = 0; i < data.sources.length; i ++) { %>
+  <li>
+    <h2><%= data.sources[i].name %></h2>
+    <p><%= data.sources[i].description %></p>
+  </li>
+  <% } %>
+</div>
+
+<% include partials/footer %>

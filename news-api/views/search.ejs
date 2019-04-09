@@ -1,18 +1,17 @@
 <% include partials/header %>
 
 <div class="article">
-  <form action="/" method="GET">
-    <h1>Search Your News Feed</h1>
-    <input type="text" placeholder="Search Your News" name="search">
-    <input type="submit">
-  </form>
+  <a href="/">Go Back</a>
   <% for (let i = 0; i < data.articles.length; i++) { %>
-  <li>
-    <h2><%= data.articles[i].title %></h2>
-    <p><%= data.articles[i].description %></p>
-    <img src="<%= data.articles[i].urlToImage %>">
-    <a href="<%= data.articles[i].url %>">Find Out More</a>
-  </li>
+  <div class="news">
+    <li>
+      <h2><%= data.articles[i].title %></h2>
+      <p><%= data.articles[i].publishedAt %></p>
+      <p><%= data.articles[i].description %></p>
+      <a href="<%= data.articles[i].url %>">Find Out More</a>
+      <img src="<%= data.articles[i].urlToImage %>">
+    </li>
+  </div>
   <% } %>
 </div>
 

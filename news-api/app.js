@@ -6,16 +6,30 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  let date = new Date();
-  let today = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDay()}`;
+  res.render("landing");
+});
+
+app.get("/search", (req, res) => {
   let query = req.query.search;
-  let url = "https://newsapi.org/v2/everything/?q=" + query + "&language=en&from=" + today + "&to=" + today + "&sortBy=relevancy&apiKey=0444a705c51c45ad8ef8e13241bf99a4";
+  let url = "https://newsapi.org/v2/everything/?q=" + query + "&language=en&apiKey=0444a705c51c45ad8ef8e13241bf99a4";
 
   request(url, (error, response, body) => {
     if (!error && response.statusCode === 200) {
       let data = JSON.parse(body);
 
       res.render("search", { data: data });
+    }
+  });
+});
+
+app.get("/sources", (req, res) => {
+  let url = "https://newsapi.org/v2/sources?language=en&country=us&apiKey=0444a705c51c45ad8ef8e13241bf99a4";
+
+  request(url, (error, response, body) => {
+    if (!error && response.statusCode === 200) {
+      let data = JSON.parse(body);
+
+      res.render("sources", { data: data });
     }
   });
 });

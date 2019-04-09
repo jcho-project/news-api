@@ -16,8 +16,9 @@ li {
 
 img {
   margin: 0 auto;
-  width: 100%;
-  max-height: 400px;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .article {
@@ -25,4 +26,9 @@ img {
   border: 1px solid grey;
   margin: auto;
   padding: 20px;
+}
+
+.news {
+  border: 1px solid grey;
+
 }
