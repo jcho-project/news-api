@@ -1,0 +1,16 @@
+<% include partials/header %>
+
+<div class="container">
+  <a href="/">Go Back</a>
+  <a href="/personal/new">Add New Article</a>
+  <h2>This is the personal news page!</h2>
+  <% for (let i = 0; i < personalNews.length; i++) { %>
+  <div>
+    <h2><%= personalNews[i].title %></h2>
+    <img src="<%= personalNews[i].image %>">
+    <p><%= personalNews[i].article %></p>
+  </div>
+  <% } %>
+</div>
+
+<% include partials/footer %>
