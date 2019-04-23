@@ -21,17 +21,6 @@ img {
   display: block;
 }
 
-.articles {
+.container .main {
   width: 80%;
-  border: 1px solid grey;
-  margin: auto;
-  padding: 20px;
-}
-
-.news {
-  border: 1px solid grey;
-}
-
-.top {
-  border: 1px solid grey;
 }

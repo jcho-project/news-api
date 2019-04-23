@@ -1,10 +1,14 @@
 <% include partials/header %>
 
-<div class="articles">
-  <form action="/search" method="GET">
+<div class="ui main text container segment">
+  <form class="ui form" action="/search" method="GET">
     <h1>Search Your News Feed</h1>
-    <input type="text" placeholder="Search Your News" name="search">
-    <input type="submit">
+    <div class="ui input">
+      <input type="text" placeholder="Search Your News" name="search">
+    </div>
+    <button class="ui primary button">
+      Submit
+    </button>
     <a href="/sources">Search Sources</a>
     <a href="/top-headlines">Top Headlines</a>
   </form>

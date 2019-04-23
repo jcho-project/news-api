@@ -28,7 +28,7 @@ app.get("/search", (req, res) => {
 
 // Top headlines of the day in the US (technology)
 app.get("/top-headlines", (req, res) => {
-  let url = "https://newsapi.org/v2/top-headlines?country=de&category=technology&apiKey=0444a705c51c45ad8ef8e13241bf99a4";
+  let url = "https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=0444a705c51c45ad8ef8e13241bf99a4";
 
   request(url, (error, response, body) => {
     if (!error && response.statusCode === 200) {
