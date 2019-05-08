@@ -26,9 +26,9 @@ app.get("/search", (req, res) => {
   });
 });
 
-// Top headlines of the day in the US (technology)
+// Top headlines of the day in the US (business)
 app.get("/top-headlines", (req, res) => {
-  let url = "https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=0444a705c51c45ad8ef8e13241bf99a4";
+  let url = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=0444a705c51c45ad8ef8e13241bf99a4";
 
   request(url, (error, response, body) => {
     if (!error && response.statusCode === 200) {
@@ -52,30 +52,30 @@ app.get("/sources", (req, res) => {
   });
 });
 
-// Test data
-let personalNews = [{ title: "Test", image: "https://farm7.staticflickr.com/6014/6015893151_044a2af184.jpg", article: "Test Article" }];
+// // Test data
+// let personalNews = [{ title: "Test", image: "https://farm7.staticflickr.com/6014/6015893151_044a2af184.jpg", article: "Test Article" }];
 
-// Add personal news
-app.get("/personal", (req, res) => {
-  res.render("personal", { personalNews: personalNews });
-});
+// // Add personal news
+// app.get("/personal", (req, res) => {
+//   res.render("personal", { personalNews: personalNews });
+// });
 
-// Post personal news
-app.post("/personal", (req, res) => {
-  let title = req.body.title;
-  let image = req.body.image;
-  let article = req.body.article;
+// // Post personal news
+// app.post("/personal", (req, res) => {
+//   let title = req.body.title;
+//   let image = req.body.image;
+//   let article = req.body.article;
 
-  let newPersonal = { title: title, image: image, article: article }
+//   let newPersonal = { title: title, image: image, article: article }
 
-  personalNews.push(newPersonal);
+//   personalNews.push(newPersonal);
 
-  res.redirect("/personal");
-});
+//   res.redirect("/personal");
+// });
 
-// New personal news form
-app.get("/personal/new", (req, res) => {
-  res.render("new");
-});
+// // New personal news form
+// app.get("/personal/new", (req, res) => {
+//   res.render("new");
+// });
 
 app.listen(3000, () => console.log("Server is Listening on Port : 3000"));

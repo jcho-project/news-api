@@ -24,3 +24,20 @@ img {
 .container .main {
   width: 80%;
 }
+
+.container a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+}
+
+.container .form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ui .button {
+  margin: 0;
+}
