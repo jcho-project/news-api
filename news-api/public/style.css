@@ -25,6 +25,8 @@ img {
   width: 80%;
 }
 
+/* Landing Page Buttons */
+
 .headline, .source {
   display: block;
   text-decoration: none;
@@ -58,4 +60,11 @@ img {
 
 .ui .button {
   margin: 5px 0;
+}
+
+/* Sources */
+
+.sources {
+  width: 80%;
+  margin: 0 auto;
 }

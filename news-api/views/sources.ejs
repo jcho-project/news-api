@@ -2,12 +2,26 @@
 
 <div class="sources">
   <a href="/">Go Back</a>
-  <% for (let i = 0; i < data.sources.length; i ++) { %>
-  <li>
-    <h2><%= data.sources[i].name %></h2>
-    <p><%= data.sources[i].description %></p>
-  </li>
-  <% } %>
+  <div class="ui cards">
+    <% for (let i = 0; i < data.sources.length; i ++) { %>
+    <div class="card">
+      <div class="content">
+        <div class="header">
+          <h2><%= data.sources[i].name %></h2>
+        </div>
+        <div class="meta">
+          <%= data.sources[i].category %>
+        </div>
+        <div class="description">
+          <p><%= data.sources[i].description %></p>
+        </div>
+      </div>
+      <div class="ui bottom attached button">
+        <a href="<%= data.sources[i].url %>">Go to <%= data.sources[i].name %></a>
+      </div>
+    </div>
+    <% } %>
+  </div>
 </div>
 
 <% include partials/footer %>
