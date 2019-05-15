@@ -1,20 +1,26 @@
 <% include partials/header %>
 
-<div class="ui main text container segment">
-  <form class="ui form" action="/search" method="GET">
-    <h1>Your Source of Financial News</h1>
-    <div class="ui input">
-      <input type="text" placeholder="Search Your News" name="search">
-    </div>
-    <button class="ui primary button">
-      Submit
-    </button>
-    <a class="source" href="/sources">Our Sources</a>
-    <a class="headline" href="/top-headlines">Top Headlines</a>
-  </form>
+<div class="ui inverted vertical masthead center aligned segment">
+  <!-- <div class="ui center aligned container segment"> -->
+  <div class="ui inverted text container">
+    <h1 class="ui inverted header">
+      Your Source of Business News
+    </h1>
+    <h2>Find whatever you want, whenever you want to.</h2>
+    <form class="ui tiny form" action="/search" method="GET">
+      <div class="ui input">
+        <input type="text" placeholder="Search Your News" name="search">
+      </div>
+      <button class="ui tiny submit button">
+        Submit
+      </button>
+    </form>
+  </div>
   <!-- <form class="ui form" action="/personal/new">
-    <button class="ui orange button" ype="submit">Add Article</button>
-  </form> -->
+      <button class="ui orange button" ype="submit">Add Article</button>
+    </form> -->
+  <!-- </div> -->
 </div>
+
 
 <% include partials/footer %>

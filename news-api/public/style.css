@@ -1,70 +1,70 @@
+:root {
+  --primary-background: rgba(0, 0, 0, 0.87);
+}
+
 body {
-  font-family: Arial, Helvetica, serif;
+  background-color: var(--primary-background);
 }
 
-h2 {
-  font-size: 16px;
-}
+/* =================================== */
+/* Landing */
+/* =================================== */
 
-p {
-  font-size: 14px;
-}
-
-li {
-  list-style: none;
-}
-
-img {
-  margin: 0 auto;
-  max-width: 50%;
-  height: auto;
-  display: block;
-}
-
-.container .main {
-  width: 80%;
-}
-
-/* Landing Page Buttons */
-
-.headline, .source {
-  display: block;
-  text-decoration: none;
-  color: black;
-  border: 2px solid steelblue;
-  border-radius: 5px;
-  height: 40px;
-  text-align: center;
-  padding-top: 10px;
-  margin-top: 10px;
-  font-weight: 700;
-}
-
-.headline:hover {
-  color: #fff;
-  background-color: steelblue;
-  cursor: pointer;
-}
-
-.source:hover {
-  color: #fff;
-  background-color: steelblue;
-  cursor: pointer;
-}
-
-.container .form {
+.masthead.center.aligned.segment {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.ui .button {
-  margin: 5px 0;
+.center.aligned.container {
+  margin-top: 50.53px;
 }
 
+/* Landing Form */
+
+.ui.input {
+  width: 500px;
+}
+
+.ui.tiny.submit.button {
+  margin: 2px 0 0 0;
+  width: 500px;
+}
+
+/* Landing Font */
+
+.ui.inverted.header {
+  font-size: 4em;
+}
+
+h2 {
+  margin: 30px 0;
+  font-size: 1.7em;
+}
+
+/* =================================== */
 /* Sources */
+/* =================================== */
 
 .sources {
   width: 80%;
   margin: 0 auto;
+  margin-top: 5em;
+}
+
+/* =================================== */
+/* Top-Headlines & Search */
+/* =================================== */
+
+.container.segment {
+  margin-top: 80px;
+}
+
+img {
+  max-height: 170px;
+}
+
+.floated.primary.button {
+  margin-top: 50px;
 }
