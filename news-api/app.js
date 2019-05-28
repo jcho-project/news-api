@@ -52,6 +52,8 @@ app.get("/sources", (req, res) => {
   });
 });
 
+// CREATE ROUTE TEST
+
 // // Test data
 // let personalNews = [{ title: "Test", image: "https://farm7.staticflickr.com/6014/6015893151_044a2af184.jpg", article: "Test Article" }];
 
