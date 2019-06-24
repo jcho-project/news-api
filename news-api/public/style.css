@@ -50,8 +50,21 @@ h2 {
 .sources {
   width: 80%;
   margin: 0 auto;
-  margin-top: 5em;
+  margin-top: 3em;
 }
+
+/* Search Bar */
+
+.search-bar {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 6em;
+}
+
+.search-text {
+  width: 100%;
+}
+
 
 /* =================================== */
 /* Top-Headlines & Search */
