@@ -1,16 +1,16 @@
 <% include partials/header %>
 
 <div class="search-bar">
-  <input class="search-text" type="search" placeholder="Search your Sources">
+  <input class="search-text" type="text" placeholder="Search your Sources">
 </div>
 
 <div class="sources">
   <div class="ui cards">
     <% for (let i = 0; i < data.sources.length; i ++) { %>
-    <div class="card">
+    <div id="source-card" class="card">
       <div class="content">
         <div class="header">
-          <h2><%= data.sources[i].name %></h2>
+          <h2 class="source-name"><%= data.sources[i].name %></h2>
         </div>
         <div class="meta">
           <%= data.sources[i].category %>
