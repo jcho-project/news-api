@@ -59,9 +59,9 @@ h2 {
 
 /* Search Bar */
 
-.search-bar {
+.ui.input.search-bar {
   width: 50%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   margin-top: 6em;
 }
 
