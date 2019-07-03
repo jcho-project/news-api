@@ -61,8 +61,10 @@ h2 {
 
 .ui.input.search-bar {
   width: 50%;
-  /* margin: 0 auto; */
   margin-top: 6em;
+  width: 100%;
+  padding: 0 20%;
+  border: 0;
 }
 
 .search-text {
