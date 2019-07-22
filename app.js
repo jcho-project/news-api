@@ -1,7 +1,10 @@
 const express = require("express");
 const app = express();
+const mongoose = require("mongoose");
 const request = require("request");
 const bodyParser = require("body-parser");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
