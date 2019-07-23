@@ -5,10 +5,26 @@ const request = require("request");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+const User = require("./models/user");
+const methodOverride = require("method-override");
 
+// PASSPORT CONFIG
+app.use(require("express-session")({
+  secret: "security",
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+// EXPRESS : BODY PARSER : METHOD OVERRIDE CONFIG
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
 // Landing Page
 app.get("/", (req, res) => {
