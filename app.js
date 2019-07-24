@@ -71,6 +71,47 @@ app.get("/sources", (req, res) => {
   });
 });
 
+// ===========================================
+// AUTHENTICATION ROUTES
+// ===========================================
+
+// Show register form
+app.get("/register", (req, res) => {
+  res.render("register");
+});
+
+// Sign up logic
+app.post("/register", (req, res) => {
+  let newUser = new User.({ username: req.body.username });
+  User.register(newUser, req.body.password, (err, user) => {
+    if (err) {
+      console.log(err.message);
+      return res.render("/register");
+    }
+    passport.authenticate("local")(req, res, () => {
+      res.redirect("/landing");
+    });
+  });
+});
+
+// Show login form
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+// Login logic
+app.post("/login", passport.authenticate("local",
+  {
+    successRedirect: "/landing",
+    failureRedirect: "/login"
+  }), (req, res) => { });
+
+// Logout logic
+app.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect("/landing");
+});
+
 // CREATE ROUTE TEST
 
 // // Test data
