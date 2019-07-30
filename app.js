@@ -26,6 +26,11 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
+// MONGOOSE CONFIG
+var url = "mongodb://localhost/news-api";
+
+mongoose.connect(url, { useNewUrlParser: true });
+
 // Landing Page
 app.get("/", (req, res) => {
   res.render("landing");
@@ -82,11 +87,11 @@ app.get("/register", (req, res) => {
 
 // Sign up logic
 app.post("/register", (req, res) => {
-  let newUser = new User.({ username: req.body.username });
+  let newUser = new User({ username: req.body.username });
   User.register(newUser, req.body.password, (err, user) => {
     if (err) {
       console.log(err.message);
-      return res.render("/register");
+      return res.render("register");
     }
     passport.authenticate("local")(req, res, () => {
       res.redirect("/landing");
@@ -102,7 +107,7 @@ app.get("/login", (req, res) => {
 // Login logic
 app.post("/login", passport.authenticate("local",
   {
-    successRedirect: "/landing",
+    successRedirect: "/",
     failureRedirect: "/login"
   }), (req, res) => { });
 
