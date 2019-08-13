@@ -8,6 +8,9 @@ const LocalStrategy = require("passport-local");
 const User = require("./models/user");
 const methodOverride = require("method-override");
 
+// FLASH CONFIG
+app.use(flash());
+
 // PASSPORT CONFIG
 app.use(require("express-session")({
   secret: "security",
@@ -25,6 +28,14 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+
+// FLASH CONFIG
+app.use(function (req, res, next) {
+  res.locals.currentUser = req.user;
+  res.locals.error = req.flash("error");
+  res.locals.success = req.flash("success");
+  next();
+});
 
 // MONGOOSE CONFIG
 var url = "mongodb://localhost/news-api";
