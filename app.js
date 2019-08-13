@@ -31,6 +31,10 @@ var url = "mongodb://localhost/news-api";
 
 mongoose.connect(url, { useNewUrlParser: true });
 
+// ===========================================
+// INDEX ROUTES
+// ===========================================
+
 // Landing Page
 app.get("/", (req, res) => {
   res.render("landing");
@@ -94,7 +98,7 @@ app.post("/register", (req, res) => {
       return res.render("register");
     }
     passport.authenticate("local")(req, res, () => {
-      res.redirect("/landing");
+      res.redirect("/");
     });
   });
 });
@@ -114,7 +118,7 @@ app.post("/login", passport.authenticate("local",
 // Logout logic
 app.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/landing");
+  res.redirect("/");
 });
 
 // CREATE ROUTE TEST

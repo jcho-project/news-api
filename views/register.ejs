@@ -1,11 +1,18 @@
 <% include partials/header %>
 
-<h1>Register</h1>
-
-<form action="/register" method="POST">
-  <input type="text" name="username" placeholder="username">
-  <input type="password" name="password" placeholder="password">
-  <button>Submit</button>
-</form>
+<div class="ui container segment">
+  <form class="ui form" action="/register" method="POST">
+    <h1 class="ui header">Register</h1>
+    <div class="field">
+      <label>Username</label>
+      <input type="text" name="username" placeholder="Username">
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" name="password" placeholder="Password">
+    </div>
+    <button class="ui button">Submit</button>
+  </form>
+</div>
 
 <% include partials/footer %>

@@ -92,3 +92,11 @@ img {
 .floated.primary.button {
   margin-top: 50px;
 }
+
+/* =================================== */
+/* Login / Register */
+/* =================================== */
+
+.ui.container.segment {
+  width: 40%;
+}
