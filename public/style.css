@@ -97,6 +97,15 @@ img {
 /* Login / Register */
 /* =================================== */
 
-.ui.container.segment {
+#login {
   width: 40%;
+}
+
+#register {
+  width: 40%;
+}
+
+.ui.message {
+  margin: 50.53px 0 0 0;
+  background-color: var(--primary-background);
 }

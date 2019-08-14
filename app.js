@@ -7,6 +7,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user");
 const methodOverride = require("method-override");
+const flash = require("connect-flash");
 
 // FLASH CONFIG
 app.use(flash());
@@ -106,9 +107,11 @@ app.post("/register", (req, res) => {
   User.register(newUser, req.body.password, (err, user) => {
     if (err) {
       console.log(err.message);
+      req.flash("error", err.message);
       return res.render("register");
     }
     passport.authenticate("local")(req, res, () => {
+      req.flash("success", "Welcome to the News-API " + user.username);
       res.redirect("/");
     });
   });
@@ -129,6 +132,7 @@ app.post("/login", passport.authenticate("local",
 // Logout logic
 app.get("/logout", (req, res) => {
   req.logout();
+  req.flash("success", "Logged you Out!");
   res.redirect("/");
 });
 

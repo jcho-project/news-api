@@ -18,6 +18,31 @@
         <a href="/" class="item"><i class="paragraph large icon inverted"></i>News API</a>
         <a href="/top-headlines" class="item">Top Headlines</a>
         <a href="/sources" class="item">Our Sources</a>
+        <% if (!currentUser) { %>
+        <a href="/login" class="right item">Login</a>
+        <a href="/register" class="item">Sign Up</a>
+        <% } else { %>
+        <a class="right item" href="#">Signed In As <%= currentUser.username %></a>
+        <a class="item" href="/logout">Logout</a>
+        <% } %>
       </div>
     </div>
   </header>
+  <% if (error && error.length > 0) { %>
+  <div class="ui error message">
+    <div class="header">
+      Error!
+    </div>
+    <i class="close icon"></i>
+    <p><%= error %></p>
+  </div>
+  <% } %>
+  <% if (success && success.length > 0) { %>
+  <div class="ui success message">
+    <div class="header">
+      Success!
+    </div>
+    <i class="close icon"></i>
+    <p><%= success %></p>
+  </div>
+  <% } %>
