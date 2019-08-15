@@ -105,7 +105,17 @@ img {
   width: 40%;
 }
 
+/* =================================== */
+/* Flash Messages */
+/* =================================== */
+
 .ui.message {
   margin: 50.53px 0 0 0;
   background-color: var(--primary-background);
+  display: flex;
+  justify-content: center;
+}
+
+.ui.message > p {
+  margin: 0;
 }

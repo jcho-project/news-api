@@ -108,7 +108,8 @@ app.post("/register", (req, res) => {
     if (err) {
       console.log(err.message);
       req.flash("error", err.message);
-      return res.render("register");
+      // return res.render("register");
+      res.redirect("/register");
     }
     passport.authenticate("local")(req, res, () => {
       req.flash("success", "Welcome to the News-API " + user.username);

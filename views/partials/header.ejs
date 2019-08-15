@@ -29,20 +29,14 @@
     </div>
   </header>
   <% if (error && error.length > 0) { %>
-  <div class="ui error message">
-    <div class="header">
-      Error!
-    </div>
-    <i class="close icon"></i>
+  <div class="ui small error message">
+    <i class="ban icon"></i>
     <p><%= error %></p>
   </div>
   <% } %>
   <% if (success && success.length > 0) { %>
-  <div class="ui success message">
-    <div class="header">
-      Success!
-    </div>
-    <i class="close icon"></i>
+  <div class="ui small success message">
+    <i class="check icon"></i>
     <p><%= success %></p>
   </div>
   <% } %>
