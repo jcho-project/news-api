@@ -8,6 +8,7 @@ const LocalStrategy = require("passport-local");
 const User = require("./models/user");
 const methodOverride = require("method-override");
 const flash = require("connect-flash");
+const Comment = require("./models/comment");
 
 // FLASH CONFIG
 app.use(flash());
