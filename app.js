@@ -10,9 +10,6 @@ const methodOverride = require("method-override");
 const flash = require("connect-flash");
 const Comment = require("./models/comment");
 
-// FLASH CONFIG
-app.use(flash());
-
 // PASSPORT CONFIG
 app.use(require("express-session")({
   secret: "security",
@@ -32,6 +29,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
 // FLASH CONFIG
+app.use(flash());
+
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
   res.locals.error = req.flash("error");
