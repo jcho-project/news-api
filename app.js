@@ -1,14 +1,14 @@
-const express = require("express");
-const app = express();
-const mongoose = require("mongoose");
-const request = require("request");
-const bodyParser = require("body-parser");
-const passport = require("passport");
-const LocalStrategy = require("passport-local");
-const User = require("./models/user");
-const methodOverride = require("method-override");
-const flash = require("connect-flash");
-const Comment = require("./models/comment");
+const express = require("express"),
+  app = express(),
+  mongoose = require("mongoose"),
+  request = require("request"),
+  bodyParser = require("body-parser"),
+  passport = require("passport"),
+  LocalStrategy = require("passport-local"),
+  User = require("./models/user"),
+  methodOverride = require("method-override"),
+  flash = require("connect-flash"),
+  Comment = require("./models/comment");
 
 // PASSPORT CONFIG
 app.use(require("express-session")({
@@ -73,6 +73,7 @@ app.get("/top-headlines", (req, res) => {
   request(url, (error, response, body) => {
     if (!error && response.statusCode === 200) {
       let data = JSON.parse(body);
+      console.log(data);
 
       res.render("top-headlines", { data: data });
     }
