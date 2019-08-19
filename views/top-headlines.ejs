@@ -2,20 +2,20 @@
 
 <div class="ui main container segment">
   <div class="ui divided items">
-    <% for (let i = 0; i < data.articles.length; i++) { %>
+    <% for (let i = 0; i < data.length; i++) { %>
     <div class="item">
       <div class="ui medium image">
-        <img src="<%= data.articles[i].urlToImage %>">
+        <img src="<%= data[i].urlToImage %>">
       </div>
       <div class="ui middle aligned content">
-        <a href="<%= data.articles[i].url %>" class="header"><%= data.articles[i].title %></a>
+        <a href="<%= data[i].url %>" class="header"><%= data[i].title %></a>
         <div class="meta">
-          <span><%= data.articles[i].publishedAt %></span>
+          <span><%= data[i].publishedAt %></span>
         </div>
         <div class="description">
-          <p><%= data.articles[i].description %></p>
+          <p><%= data[i].description %></p>
         </div>
-        <a class="ui right floated primary button" href="<%= data.articles[i].url %>">
+        <a class="ui right floated primary button" href="<%= data[i].url %>">
           Find Out More
           <i class="right chevron icon"></i>
         </a>

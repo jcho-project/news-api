@@ -8,7 +8,8 @@ const express = require("express"),
   User = require("./models/user"),
   methodOverride = require("method-override"),
   flash = require("connect-flash"),
-  Comment = require("./models/comment");
+  Comment = require("./models/comment"),
+  Articles = require("./models/articles");
 
 // PASSPORT CONFIG
 app.use(require("express-session")({
@@ -73,9 +74,36 @@ app.get("/top-headlines", (req, res) => {
   request(url, (error, response, body) => {
     if (!error && response.statusCode === 200) {
       let data = JSON.parse(body);
-      console.log(data);
 
-      res.render("top-headlines", { data: data });
+      // // Initial Top-Headlines Save
+      // Articles.insertMany(data.articles, (err, article) => {
+      //   if (err) {
+      //     console.log(err);
+      //   } else {
+      //     console.log("Inserted!");
+      //   }
+      // });
+
+      data.articles.forEach(function (n) {
+        Articles.findOneAndUpdate(n, n, { upsert: true }, function (err, doc) {
+          console.log("Updated!");
+        });
+      });
+
+      Articles.find((err, result) => {
+        if (err) {
+          console.log(err);
+        } else {
+          // Array.result
+          Array.isArray(result);
+
+          console.log(result[0]);
+
+          res.render("top-headlines", { data: result })
+        }
+      });
+
+      // res.render("top-headlines", { data: data });
     }
   });
 });
