@@ -84,26 +84,23 @@ app.get("/top-headlines", (req, res) => {
       //   }
       // });
 
+      // Update New Articles
       data.articles.forEach(function (n) {
-        Articles.findOneAndUpdate(n, n, { upsert: true }, function (err, doc) {
-          console.log("Updated!");
+        Articles.findOneAndUpdate(n, n, { new: true, upsert: true }, function (err, doc) {
+          if (err) {
+            console.log(err);
+          }
         });
       });
+    }
+  });
 
-      Articles.find((err, result) => {
-        if (err) {
-          console.log(err);
-        } else {
-          // Array.result
-          Array.isArray(result);
-
-          console.log(result[0]);
-
-          res.render("top-headlines", { data: result })
-        }
-      });
-
-      // res.render("top-headlines", { data: data });
+  // Sort and Pass Through Data
+  Articles.find().sort({ publishedAt: -1 }).exec((err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("top-headlines", { data: result })
     }
   });
 });

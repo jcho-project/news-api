@@ -11,7 +11,7 @@ let articleSchema = mongoose.Schema({
   description: String,
   url: String,
   urlToImage: String,
-  publishedAt: String,
+  publishedAt: { type: Date },
   content: String
 });
 
