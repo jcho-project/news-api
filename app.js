@@ -75,15 +75,6 @@ app.get("/top-headlines", (req, res) => {
     if (!error && response.statusCode === 200) {
       let data = JSON.parse(body);
 
-      // // Initial Top-Headlines Save
-      // Articles.insertMany(data.articles, (err, article) => {
-      //   if (err) {
-      //     console.log(err);
-      //   } else {
-      //     console.log("Inserted!");
-      //   }
-      // });
-
       // Update New Articles
       data.articles.forEach(function (n) {
         Articles.findOneAndUpdate(n, n, { new: true, upsert: true }, function (err, doc) {
@@ -95,6 +86,17 @@ app.get("/top-headlines", (req, res) => {
     }
   });
 
+  // Delete Articles Older than 1 Day
+  let date = new Date();
+  let daysToDeletion = 1;
+  let deletionDate = new Date(date.setDate(date.getDate() - daysToDeletion));
+
+  Articles.deleteMany({ publishedAt: { $lt: deletionDate } }, (err, truncate) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+
   // Sort and Pass Through Data
   Articles.find().sort({ publishedAt: -1 }).exec((err, result) => {
     if (err) {
@@ -103,6 +105,7 @@ app.get("/top-headlines", (req, res) => {
       res.render("top-headlines", { data: result })
     }
   });
+
 });
 
 // List of sources
@@ -162,33 +165,5 @@ app.get("/logout", (req, res) => {
   req.flash("success", "Logged you Out!");
   res.redirect("/");
 });
-
-// CREATE ROUTE TEST
-
-// // Test data
-// let personalNews = [{ title: "Test", image: "https://farm7.staticflickr.com/6014/6015893151_044a2af184.jpg", article: "Test Article" }];
-
-// // Add personal news
-// app.get("/personal", (req, res) => {
-//   res.render("personal", { personalNews: personalNews });
-// });
-
-// // Post personal news
-// app.post("/personal", (req, res) => {
-//   let title = req.body.title;
-//   let image = req.body.image;
-//   let article = req.body.article;
-
-//   let newPersonal = { title: title, image: image, article: article }
-
-//   personalNews.push(newPersonal);
-
-//   res.redirect("/personal");
-// });
-
-// // New personal news form
-// app.get("/personal/new", (req, res) => {
-//   res.render("new");
-// });
 
 app.listen(process.env.PORT || 4000, () => console.log("Server is Listening on Port : 4000"));
