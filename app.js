@@ -43,6 +43,7 @@ app.use(function (req, res, next) {
 var url = "mongodb://localhost/news-api";
 
 mongoose.connect(url, { useNewUrlParser: true });
+mongoose.set('useFindAndModify', false);
 
 // ===========================================
 // INDEX ROUTES
@@ -83,28 +84,30 @@ app.get("/top-headlines", (req, res) => {
           }
         });
       });
+
+      // Delete Articles Older than 1 Day
+      let date = new Date();
+      let daysToDeletion = 1;
+      let deletionDate = new Date(date.setDate(date.getDate() - daysToDeletion));
+
+      Articles.deleteMany({ publishedAt: { $lt: deletionDate } }, (err, truncate) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+
+      // Sort and Pass Through Data
+      Articles.find().sort({ publishedAt: -1 }).exec((err, result) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.render("top-headlines", { data: result })
+        }
+      });
+
     }
   });
 
-  // Delete Articles Older than 1 Day
-  let date = new Date();
-  let daysToDeletion = 1;
-  let deletionDate = new Date(date.setDate(date.getDate() - daysToDeletion));
-
-  Articles.deleteMany({ publishedAt: { $lt: deletionDate } }, (err, truncate) => {
-    if (err) {
-      console.log(err);
-    }
-  });
-
-  // Sort and Pass Through Data
-  Articles.find().sort({ publishedAt: -1 }).exec((err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.render("top-headlines", { data: result })
-    }
-  });
 
 });
 
