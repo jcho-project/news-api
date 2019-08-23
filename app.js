@@ -40,7 +40,7 @@ app.use(function (req, res, next) {
 });
 
 // MONGOOSE CONFIG
-var url = "mongodb://localhost/news-api";
+var url = process.env.DATABASEURL || "mongodb://localhost/news-api";
 
 mongoose.connect(url, { useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
