@@ -57,7 +57,11 @@ app.get("/", (req, res) => {
 // Search for news (english)
 app.get("/search", (req, res) => {
   let query = req.query.search;
-  let url = "https://newsapi.org/v2/everything/?q=" + query + "&language=en&apiKey=0444a705c51c45ad8ef8e13241bf99a4";
+  let category = req.query.dropdown;
+
+  console.log(category);
+
+  let url = "https://newsapi.org/v2/top-headlines/?q=" + query + "&category=" + category + "&language=en&apiKey=0444a705c51c45ad8ef8e13241bf99a4";
 
   request(url, (error, response, body) => {
     if (!error && response.statusCode === 200) {

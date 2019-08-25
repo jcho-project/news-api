@@ -7,12 +7,19 @@
     </h1>
     <h2>Find whatever you want, whenever you want to.</h2>
     <form class="ui tiny form" action="/search" method="GET">
-      <div class="ui input">
+      <div class="ui action input">
         <input type="text" placeholder="Search Your News" name="search">
+        <select name="dropdown" class="ui compact selection dropdown">
+          <option selected="" value="business">Business</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="general">General</option>
+          <option value="health">Health</option>
+          <option value="science">Science</option>
+          <option value="sports">Sports</option>
+          <option value="technology">Technology</option>
+        </select>
+        <button class="ui tiny button">Submit</button>
       </div>
-      <button class="ui tiny submit button">
-        Submit
-      </button>
     </form>
   </div>
 </div>
