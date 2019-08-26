@@ -10,6 +10,8 @@ body {
 /* Landing */
 /* =================================== */
 
+ /* TODO: */
+
 .masthead.center.aligned.segment {
   height: 100vh;
   display: flex;
@@ -20,12 +22,18 @@ body {
 /* Landing Form */
 
 .ui.tiny.form {
-  width: 700px;
+}
+
+.ui.action.input {
   display: flex;
   justify-content: center;
 }
 
 .ui.compact.selection.dropdown {
+}
+
+.ui.input {
+
 }
 
 /* Landing Font */

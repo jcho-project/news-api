@@ -108,11 +108,8 @@ app.get("/top-headlines", (req, res) => {
           res.render("top-headlines", { data: result })
         }
       });
-
     }
   });
-
-
 });
 
 // List of sources
