@@ -21,19 +21,9 @@ body {
 
 /* Landing Form */
 
-.ui.tiny.form {
-}
-
 .ui.action.input {
   display: flex;
   justify-content: center;
-}
-
-.ui.compact.selection.dropdown {
-}
-
-.ui.input {
-
 }
 
 /* Landing Font */
