@@ -9,7 +9,8 @@ const express = require("express"),
   methodOverride = require("method-override"),
   flash = require("connect-flash"),
   Comment = require("./models/comment"),
-  Articles = require("./models/articles");
+  Articles = require("./models/articles"),
+  Search = require("./models/search");
 
 // PASSPORT CONFIG
 app.use(require("express-session")({
@@ -59,15 +60,29 @@ app.get("/search", (req, res) => {
   let query = req.query.search;
   let category = req.query.dropdown;
 
-  console.log(category);
-
   let url = "https://newsapi.org/v2/top-headlines/?q=" + query + "&category=" + category + "&language=en&apiKey=0444a705c51c45ad8ef8e13241bf99a4";
 
   request(url, (error, response, body) => {
     if (!error && response.statusCode === 200) {
       let data = JSON.parse(body);
 
-      res.render("search", { data: data });
+      // Update New Articles
+      data.articles.forEach(function (n) {
+        Search.findOneAndUpdate(n, n, { new: true, upsert: true }, function (err, doc) {
+          if (err) {
+            console.log(err);
+          }
+        });
+      });
+
+      // Sort and Pass Through Data
+      Search.find().sort({ publishedAt: -1 }).exec((err, result) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.render("top-headlines", { data: result })
+        }
+      });
     }
   });
 });
